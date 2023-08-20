@@ -1,0 +1,69 @@
+<% if(user?.isAdmin){ %>
+<button
+	type="button"
+	class="btn btn-primary"
+	data-bs-toggle="modal"
+	data-bs-target="#form"
+>
+	Add New
+</button>
+<div
+	class="modal fade"
+	id="form"
+	tabindex="-1"
+	aria-labelledby="form"
+	aria-hidden="true"
+>
+	<div class="modal-dialog">
+		<form action="/categories" method="POST">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h1 class="modal-title fs-5" id="form">New Product</h1>
+					<button
+						type="button"
+						class="btn-close"
+						data-bs-dismiss="modal"
+						aria-label="Close"
+					></button>
+				</div>
+				<div class="modal-body">
+					<div class="form-floating mb-3">
+						<input
+							type="text"
+							name="name"
+							class="form-control"
+							id="name"
+							placeholder="Name"
+						/>
+						<label for="name">Name</label>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button
+						type="button"
+						class="btn btn-secondary"
+						data-bs-dismiss="modal"
+					>
+						Close
+					</button>
+					<button type="submit" class="btn btn-primary">
+						Save changes
+					</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+<% } %>
+<div class="row mt-3">
+	<% categories.forEach(category => { %>
+	<div class="col-12 col-sm-6 col-md-4 col-lg-2 mb-3">
+		<a
+			href="/products/<%= category.name %>"
+			class="btn btn-outline-secondary p-4 w-100"
+		>
+			<%= category.name %>
+		</a>
+	</div>
+	<% }) %>
+</div>

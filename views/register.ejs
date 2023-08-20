@@ -1,0 +1,43 @@
+<div class="row">
+	<div class="col-12 col-sm-12 col-md-6 col-lg-4">
+		<form action="/register" method="POST">
+			<div class="form-floating mb-3">
+				<input
+					type="text"
+					name="name"
+					class="form-control"
+					id="name"
+					placeholder="Name"
+				/>
+				<label for="name">Name</label>
+			</div>
+			<div class="form-floating mb-3">
+				<input
+					type="email"
+					name="email"
+					class="form-control"
+					id="email"
+					placeholder="Email"
+				/>
+				<label for="email">Email</label>
+			</div>
+			<div class="form-floating mb-3">
+				<input
+					name="password"
+					type="password"
+					class="form-control"
+					id="password"
+					placeholder="Password"
+				/>
+				<label for="password">Password</label>
+			</div>
+			<button type="submit" class="btn btn-primary mb-3">Register</button>
+			<div class="d-flex justify-content-between">
+				<a href="/password-recovery" class="text-decoration-none"
+					>Forgot password?</a
+				>
+				<a href="/login" class="text-decoration-none">Login</a>
+			</div>
+		</form>
+	</div>
+</div>
