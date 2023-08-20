@@ -1,0 +1,120 @@
+<% if(user?.isAdmin){ %>
+<button
+	type="button"
+	class="btn btn-primary"
+	data-bs-toggle="modal"
+	data-bs-target="#form"
+>
+	Add New
+</button>
+<div
+	class="modal fade"
+	id="form"
+	tabindex="-1"
+	aria-labelledby="form"
+	aria-hidden="true"
+>
+	<div class="modal-dialog">
+		<form action="/products" method="POST">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h1 class="modal-title fs-5" id="form">New Product</h1>
+					<button
+						type="button"
+						class="btn-close"
+						data-bs-dismiss="modal"
+						aria-label="Close"
+					></button>
+				</div>
+				<div class="modal-body">
+					<div class="form-floating mb-3">
+						<input
+							type="text"
+							name="name"
+							class="form-control"
+							id="name"
+							placeholder="Name"
+						/>
+						<label for="name">Name</label>
+					</div>
+					<div class="form-floating mb-3">
+						<input
+							type="number"
+							name="price"
+							class="form-control"
+							id="price"
+							placeholder="Price"
+						/>
+						<label for="price">Price</label>
+					</div>
+					<div class="form-floating mb-3">
+						<select
+							class="form-select"
+							id="category"
+							name="categoryId"
+							aria-label="Floating label select example"
+						>
+							<% categories.forEach(category => { %>
+							<option value="<%= category.id %>">
+								<%= category.name %>
+							</option>
+							<% }) %>
+						</select>
+						<label for="password">Password</label>
+					</div>
+					<!-- <button type="submit" class="btn btn-primary">Save</button> -->
+				</div>
+				<div class="modal-footer">
+					<button
+						type="button"
+						class="btn btn-secondary"
+						data-bs-dismiss="modal"
+					>
+						Close
+					</button>
+					<button type="submit" class="btn btn-primary">
+						Save changes
+					</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+<% } %>
+<a href="/categories" class="btn btn-outline-secondary">Categories</a>
+<a href="/products" class="btn btn-outline-secondary">All Products</a>
+<div class="row mt-3">
+	<% products.forEach(product => { %>
+	<div class="col-12 col-sm-12 col-md-6 col-lg-4 mb-3">
+		<div class="card">
+			<div class="card-body text-center">
+				<div class="card-title"><h5><%= product.name %></h5></div>
+				<div>$<%= product.price %></div>
+				<div class="btn-group mt-3" role="group">
+					<% if(user?.isAdmin){ %>
+					<a
+						href="/products/remove/<%= product.id %>"
+						class="btn btn-danger"
+						><i class="bi bi-trash3"></i
+					></a>
+					<!-- <a href="#" class="btn btn-primary"
+						><i class="bi bi-pen"></i
+					></a> -->
+					<% }else{ %>
+					<a
+						href="/cart/remove/<%= product.id %>"
+						class="btn btn-danger <% if(!product.isInCart){ %>disabled<% } %>"
+						><i class="bi bi-dash-circle"></i
+					></a>
+					<a
+						href="/cart/add/<%= product.id %>"
+						class="btn btn-success <% if(product.isInCart){ %>disabled<% } %>"
+						><i class="bi bi-plus-circle"></i
+					></a>
+					<% } %>
+				</div>
+			</div>
+		</div>
+	</div>
+	<% }) %>
+</div>

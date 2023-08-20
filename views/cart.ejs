@@ -1,0 +1,33 @@
+<a href="/categories" class="btn btn-outline-secondary">Categories</a>
+<a href="/products" class="btn btn-outline-secondary">All Products</a>
+<div class="row mt-3">
+	<% if(cart?.count > 0){ %>
+	<div class="col-12 mb-3">
+		<a href="/cart/checkout" class="btn btn-primary">Checkout</a>
+	</div>
+	<% }else if(cart?.checkout){ %>
+	<div class="col">
+		<div class="alert alert-success">Checkout is done successfully.</div>
+	</div>
+	<% }else{ %>
+	<div class="col">
+		<div class="alert alert-info">Your cart is empty.</div>
+	</div>
+	<% } %> <% cart?.list.forEach(product => { %>
+	<div class="col-12 col-sm-12 col-md-6 col-lg-4 mb-3">
+		<div class="card">
+			<div class="card-body text-center">
+				<div class="card-title"><h5><%= product.name %></h5></div>
+				<div>$<%= product.price %></div>
+				<div class="btn-group mt-3" role="group">
+					<a
+						href="/cart/remove/<%= product.id %>"
+						class="btn btn-danger"
+						><i class="bi bi-dash-circle"></i
+					></a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<% }) %>
+</div>

@@ -1,0 +1,37 @@
+{
+  "name": "shopping-cart",
+  "version": "1.0.0",
+  "description": "shopping cart with node js",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/hamidreza-dehghan/shopping-cart.git"
+  },
+  "keywords": [
+    "shopping",
+    "cart",
+    "nodejs",
+    "expressjs"
+  ],
+  "author": "HamidReza Dehghan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hamidreza-dehghan/shopping-cart/issues"
+  },
+  "homepage": "https://github.com/hamidreza-dehghan/shopping-cart#readme",
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "body-parser": "^1.20.2",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "express-ejs-layouts": "^2.5.1",
+    "express-session": "^1.17.3",
+    "mysql2": "^3.6.0",
+    "nodemon": "^3.0.1",
+    "sequelize": "^6.32.1"
+  }
+}
